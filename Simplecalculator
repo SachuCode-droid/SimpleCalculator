@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class SimpleCalculator {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);  // Creates a Scanner object to get input from the user
+        double num1, num2, result;  // Declare variables to store numbers and result
+        int choice;  // Variable to store the user's choice of operation
+
+        System.out.println("Welcome to Simple Calculator!");  // Display greeting
+        
+        // Main loop to keep running the calculator until the user chooses to exit
+        do {
+            // Display available operations to the user
+            System.out.println("\nSelect an operation:");
+            System.out.println("1. Add");
+            System.out.println("2. Subtract");
+            System.out.println("3. Multiply");
+            System.out.println("4. Divide");
+            System.out.println("5. Exit");
+
+            // Get the user's choice of operation
+            choice = sc.nextInt();  // User enters their choice
+
+            // If user chooses to exit, break the loop
+            if (choice == 5) {
+                System.out.println("Exiting the calculator. Goodbye!");
+                break;
+            }
+
+            // Ask the user to input two numbers for calculation
+            System.out.print("Enter first number: ");
+            num1 = sc.nextDouble();  // User enters the first number
+            System.out.print("Enter second number: ");
+            num2 = sc.nextDouble();  // User enters the second number
+
+            // Perform the operation based on user's choice
+            switch (choice) {
+                case 1:  // Addition
+                    result = num1 + num2;
+                    System.out.println("Result: " + result);
+                    break;
+                case 2:  // Subtraction
+                    result = num1 - num2;
+                    System.out.println("Result: " + result);
+                    break;
+                case 3:  // Multiplication
+                    result = num1 * num2;
+                    System.out.println("Result: " + result);
+                    break;
+                case 4:  // Division
+                    if (num2 != 0) {  // Check for division by zero
+                        result = num1 / num2;
+                        System.out.println("Result: " + result);
+                    } else {
+                        System.out.println("Error! Division by zero.");
+                    }
+                    break;
+                default:  // If the user enters an invalid operation
+                    System.out.println("Invalid operation.");
+            }
+        } while (choice != 5);  // Continue until user chooses to exit
+        
+        sc.close();  // Close the scanner object to avoid resource leaks
+    }
+}
